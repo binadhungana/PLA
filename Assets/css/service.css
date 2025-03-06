@@ -59,6 +59,12 @@ a:hover{
 a:hover{
     color:#007bff;;
 }
+.show {
+  display: flex;
+}
+.display {
+  display: none;
+}
 
 /* main section starts */
 .service {
@@ -252,6 +258,27 @@ a:hover{
             flex-basis: 100%;
         }
     }
-    
+    /* for hamburger navbar */
+    @media (max-width: 768px) {
+      .display {
+        display: block;
+      }
+
+      .navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background-color: #004085;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .show {
+        display: flex;
+        gap: 10px;
+      }
+    }
 
     

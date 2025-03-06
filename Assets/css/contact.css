@@ -57,6 +57,12 @@ a:hover{
 a:hover{
     color:#007bff;;
 }
+.show {
+  display: flex;
+}
+.display {
+  display: none;
+}
 
 /* navbar ends */
 /* contact section start */
@@ -286,7 +292,28 @@ h2{
         margin: 15px;
     }
 }
-
+@media (max-width: 768px) {
+  .display {
+    display: block;
+  }
+/* for navbar hamburger */
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #004085;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+  .show {
+    display: flex;
+    gap: 10px;
+  }
+}
    
 
 

@@ -13,7 +13,7 @@
       @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
     </style>
   </head>
-  <body>
+
     <!-- header section -->
     <header>
       <div class="topbar">
@@ -47,20 +47,91 @@
         </div>
       </nav>
     </header>
+    <script>
+      function Togglemenu() {
+        document.getElementById("navbar").classList.toggle("show");
+      }
+    </script>
     <!-- home section starts -->
-    <section>
-      <div class="home">
-        <div class="img1">
-          <img src="Assets/img/home/background.jpg" alt="img" />
+    <section class="slider-home">
+      <div class="slider">
+        <div class="slider-img">
+          <img src="Assets/img/home/background.jpg" alt="home page" />
         </div>
-        <div class="content">
-          <h2>Empowering Business Through Financial Clearity</h2>
-          <p>
-            we provide essential services ,trun complex financial data into
+        <div class="slidertext">
+          <h2 style="color: white">
+            Empowering Businesses Through Financial Clarity
+          </h2>
+          <p style="color: white">
+            We provide essential services, turning complex financial data into
             clear insights for business success.
           </p>
         </div>
       </div>
+      <div class="slider">
+        <div class="slider-img">
+          <img src="Assets/img/home/slider img1.jpg" alt="home page" />
+        </div>
+
+        <div class="slidertext">
+          <h2 style="color: rgb(255, 255, 255)">
+            Navigating Financial Landscapes
+          </h2>
+          <p style="color: white">
+            We expertly guide businesses through complex financial environments,
+            ensuring compliance and strategic growth.
+          </p>
+        </div>
+      </div>
+
+      <div class="slider">
+        <div class="slider-img">
+          <img src="Assets/img/home/slider img 3.jpg" alt="home page" />
+        </div>
+
+        <div class="slidertext">
+          <h2 style="color: rgb(255, 255, 255)">
+            Transforming Data into Decisions
+          </h2>
+          <p style="color: white">
+            We analyze financial data to deliver actionablr insights, empowering
+            businesses to make informed desision for their future.
+          </p>
+        </div>
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+    </section> 
+    <script>
+      let slideIndex = 1;
+      showSlides(slideIndex);
+      function showSlides(n) {
+          const slides = document.getElementsByClassName("slider");
+          console.log("This is slides", slides);
+          console.log("This is slides length", slides.length);
+          if (n > slides.length) {
+              slideIndex = 1
+          }
+          console.log("This is first slideIndex", slideIndex);
+          if (n < 1) {
+              slideIndex = slides.length
+          }
+          console.log("This is second slideIndex", slideIndex);
+          for (let i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+          }
+          console.log("This is last slideIndex", slideIndex);
+          slides[slideIndex - 1].style.display = "block";
+      }
+      function plusSlides(n) {
+          console.log("under pluseSlide function", slideIndex)
+          showSlides(slideIndex += n);
+      }
+      setInterval(() => {
+  plusSlides(1);
+}, 5000); 
+  </script>
+ 
       <!-- card section -->
 
       <div class="card">
@@ -102,7 +173,8 @@
               <div class="icon1">
                 <i class="fa-solid fa-user"></i>
                 <div class="text">
-                  <h3>22 <sup>+</sup></h3>
+                  <span class="counter" data-count="22">0</span>
+                    <sup>+</sup>
                   <p>Staffs</p>
                 </div>
               </div>
@@ -110,7 +182,8 @@
               <div class="icon1">
                 <i class="fa-solid fa-users"></i>
                 <div class="text">
-                  <h3>899 <sup>+</sup></h3>
+                  <span class="counter" data-count="899">0</span>
+                    <sup>+</sup>
                   <p>Our Clients</p>
                 </div>
               </div>
@@ -119,14 +192,16 @@
               <div class="icon1">
                 <i class="fa-solid fa-check"></i>
                 <div class="text">
-                  <h3>700 <sup>+</sup></h3>
+                  <span class="counter" data-count="700">0</span>
+                    <sup>+</sup>
                   <p>Completed Projects</p>
                 </div>
               </div>
               <div class="icon1">
                 <i class="fa-solid fa-person-running"></i>
                 <div class="text">
-                  <h3>400 <sup>+</sup></h3>
+                  <span class="counter" data-count="400">0</span>
+                    <sup>+</sup>
                   <p>Running Projects</p>
                 </div>
               </div>
@@ -134,6 +209,31 @@
           </div>
         </div>
       </div>
+      <script>
+        // Counter functionality
+        document.addEventListener("DOMContentLoaded", function () {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(function (counter) {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-count');
+                    console.log("target", target);
+                    const count = +counter.innerText;
+                    console.log("count", count);
+
+                    const increment = 5;  // Adjust the increment speed
+                    console.log("increment", increment);
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        console.log("counter.innerText", counter.innerText);
+                        setTimeout(updateCount, 100);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        });
+    </script>
 
       <!-- service section starts -->
       <div class="services">
@@ -236,10 +336,5 @@
         </div>
       </div>
     </footer>
-    <script>
-      function Togglemenu() {
-        document.getElementById("navbar").classList.toggle("show");
-      }
-    </script>
   </body>
-</html>
+  </html>

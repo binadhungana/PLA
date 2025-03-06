@@ -75,6 +75,12 @@ h3{
     
 }
 }
+.show {
+    display: flex;
+  }
+  .display {
+    display: none;
+  }
 /* navbar ends */
 
 .container1{
@@ -311,3 +317,25 @@ img{
         display: none;
     }
 }
+@media (max-width: 768px) {
+    .display {
+      display: block;
+    }
+/* for hamburger navbar */
+    .navbar {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: #004085;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+    }
+    .show {
+      display: flex;
+      gap: 10px;
+    }
+  }
